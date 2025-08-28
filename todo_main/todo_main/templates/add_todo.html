@@ -1,0 +1,47 @@
+{% extends "index.html" %}
+
+{% block title %}
+
+    Add TODO
+
+{% endblock %}
+
+{% block body-txt %}
+
+    <div class = "container m-8">
+
+        <form class = "col-6 mx-auto card p-3 shadow-lg" method = "POST">
+
+            {% csrf_token %}
+
+            <h3> Add Pending Tasks: </h3>
+
+            <hr>
+
+            <div class="mb-3">
+                <label for="todo_title" class="form-label" required>Task ID: </label>
+                <input type="text" name = "todo_id" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="todo_title" class="form-label" required>Task Name: </label>
+                <input type="text" name = "todo_title" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="todo_description"class="form-label">Task Description:</label>
+                <textarea class="form-control"  name = "todo_description"></textarea>
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" name = "todo_status" id="todo_status" >
+                <label class="form-check-label" for="todo_status">Task Status</label>
+            </div>
+            <button type="submit" class="btn btn-success">Add Task</button>
+
+            <hr>
+
+            <a href = "{% url 'home' %}" class = "btn btn-primary"> Todo List </a>
+
+        </form>
+
+    </div>
+
+{% endblock %}
