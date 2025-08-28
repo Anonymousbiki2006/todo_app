@@ -1,0 +1,36 @@
+{% extends "index.html" %}
+
+{% block title %}
+    Update
+{% endblock %}
+
+{% block body-txt %}
+
+    <div class = "m-5">
+
+        <form method ="POST">
+
+            {% csrf_token %}
+
+            <h3>Update:</h3>
+
+            <hr>
+
+            <div class="mb-3">
+                <label for="todo_title" class="form-label">Title : </label>
+                <input type="text" class="form-control" id="todo_title" name="todo_title">
+            </div>
+            <div class="mb-3">
+                <label for="todo_description" class="form-label">Description: </label>
+                <textarea class="form-control" id="todo_description" name = "todo_description"></textarea>
+            </div>
+
+            <hr>
+
+            <button class = "btn btn-outline-primary" type = "submit"> Update </button>
+
+        </form>
+
+    </div>
+
+{% endblock %}

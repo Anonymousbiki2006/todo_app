@@ -1,0 +1,66 @@
+{% extends "index.html" %}
+
+{% block title %}
+    Task Detail
+{% endblock %}
+
+{% block body-txt %}
+
+    <div class = "m-5">
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Task Title</th>
+                    <th scope="col">Task Description</th>
+                    <th scope="col">Task Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{context.todo_title}}</td>
+                    <td>{{context.todo_description}}</td>
+                    <td>
+
+                        {% if context.todo_status %}
+                            ✅
+                        {% else %}
+                            ❌
+                        {% endif %}
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <div>
+
+        <a class = "btn btn-outline-success m-5" href = "{% url 'update_task' context.task_id.task_id%}" > Update </a>
+
+    </div>
+
+    <div>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <div class="m-5 form-check">
+                <input type="checkbox" class="form-check-input" name = "todo_status" id="todo_status" {% if context.todo_status %}checked{% endif %} >
+                <label class="form-check-label" for="todo_status">Task Status</label>
+            </div>
+            
+            <button type = "submit" class = "ms-5 btn btn-primary"> Update Status </button>
+        </form>
+
+    </div>
+
+    <div class = "m-5">
+
+        <a href="{% url "home" %}" class = "btn btn-outline-primary">Homepage</a>
+
+    </div>
+
+{% endblock %}            
